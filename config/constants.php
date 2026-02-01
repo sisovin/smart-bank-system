@@ -32,6 +32,9 @@ define('ACCOUNT_BUSINESS', 'business');
 
 // Roles
 define('ROLE_ADMIN', 1);
-define('ROLE_TELLER', 2);
-define('ROLE_CUSTOMER', 3);
+define('ROLE_MANAGER', 2);
+define('ROLE_TELLER', 3);
+define('ROLE_ACCREDITED_INVESTOR', 4);
+define('ROLE_INVESTOR', 5);
+define('ROLE_CUSTOMER', 6);
 ?>

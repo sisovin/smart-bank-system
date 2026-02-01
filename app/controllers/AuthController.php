@@ -8,41 +8,45 @@ class AuthController {
     
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+            $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-            $password = $_POST['password'];
-            $confirmPassword = $_POST['confirm_password'];
-            
+            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $confirmPassword = filter_input(INPUT_POST, 'confirm_password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
             // Validation
+            if (!$username || !$email || !$password || !$confirmPassword) {
+                return ['error' => 'All fields are required'];
+            }
+
             if ($password !== $confirmPassword) {
                 return ['error' => 'Passwords do not match'];
             }
-            
+
             if ($this->userModel->findByUsername($username)) {
                 return ['error' => 'Username already exists'];
             }
-            
+
             if ($this->userModel->findByEmail($email)) {
                 return ['error' => 'Email already registered'];
             }
-            
+
             // Create user
             $userId = $this->userModel->create($username, $email, $password);
-            
+
             // Create customer record
             $customerModel = new Customer();
             $customerId = $customerModel->create($userId, [
-                'first_name' => $_POST['first_name'],
-                'last_name' => $_POST['last_name'],
-                'date_of_birth' => $_POST['dob'],
-                'address' => $_POST['address'],
-                'phone' => $_POST['phone']
+                'first_name' => filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+                'last_name' => filter_input(INPUT_POST, 'last_name', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+                'date_of_birth' => filter_input(INPUT_POST, 'dob', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+                'address' => filter_input(INPUT_POST, 'address', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+                'phone' => filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_FULL_SPECIAL_CHARS)
             ]);
-            
+
             // Create initial account
             $accountModel = new Account();
             $accountNumber = $accountModel->create($customerId, ACCOUNT_SAVINGS, 0);
-            
+
             return [
                 'success' => true,
                 'message' => 'Registration successful',
@@ -56,23 +60,28 @@ class AuthController {
     public function login() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' || $_SERVER['REQUEST_METHOD'] === 'GET') {
             $input = $_SERVER['REQUEST_METHOD'] === 'POST' ? INPUT_POST : INPUT_GET;
-            $username = filter_input($input, 'username', FILTER_SANITIZE_STRING);
-            $password = $input === INPUT_POST ? $_POST['password'] : $_GET['password'];
+            $username = filter_input($input, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $password = filter_input($input, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $ipAddress = $_SERVER['REMOTE_ADDR'];
-            
+
+            // Validate input
+            if (!$username || !$password) {
+                return ['error' => 'Username and password are required'];
+            }
+
             // Check for brute force
             $failedAttempts = $this->userModel->getFailedAttempts($username);
             if ($failedAttempts >= MAX_LOGIN_ATTEMPTS) {
                 return ['error' => 'Account locked due to too many failed attempts'];
             }
-            
+
             $user = $this->userModel->findByUsername($username);
-            
+
             if (!$user) {
                 $this->userModel->updateLoginAttempt($username, $ipAddress, false);
                 return ['error' => 'Invalid credentials'];
             }
-            
+
             if (!$this->userModel->verifyPassword($password, $user['password_hash'])) {
                 $this->userModel->updateLoginAttempt($username, $ipAddress, false);
                 return ['error' => 'Invalid credentials'];

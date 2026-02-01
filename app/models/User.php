@@ -57,11 +57,16 @@ class User {
     }
     
     public function updateLoginAttempt($username, $ip, $success) {
+        // Ensure username is not null or empty
+        if (empty($username)) {
+            return false;
+        }
+
         $sql = "INSERT INTO login_attempts (username, ip_address, success) 
                 VALUES (:username, :ip, :success)";
-        
+
         $stmt = $this->db->prepare($sql);
-        $stmt->execute([
+        return $stmt->execute([
             ':username' => $username,
             ':ip' => $ip,
             ':success' => $success
