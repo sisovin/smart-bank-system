@@ -29,10 +29,11 @@ return [
     'GET /manager/dashboard' => ['controller' => 'ManagerController', 'method' => 'dashboard', 'middleware' => ['auth', 'role:manager']],
     'GET /manager/reports' => ['controller' => 'ManagerController', 'method' => 'reports', 'middleware' => ['auth', 'role:manager']],
 
-    // Admin routes (protected)
-    'GET /admin/dashboard' => ['controller' => 'AdminController', 'method' => 'dashboard', 'middleware' => ['auth', 'role:admin']],
-    'GET /admin/users' => ['controller' => 'AdminController', 'method' => 'users', 'middleware' => ['auth', 'role:admin']],
-    'POST /admin/users' => ['controller' => 'AdminController', 'method' => 'createUser', 'middleware' => ['auth', 'role:admin']],
+    // Investor routes (protected)
+    'GET /investor/dashboard' => ['controller' => 'InvestorController', 'method' => 'dashboard', 'middleware' => ['auth', 'role:investor']],
+    'GET /api/investor/financial-data' => ['controller' => 'InvestorController', 'method' => 'getFinancialData', 'middleware' => ['auth', 'role:investor']],
+    'GET /api/investor/documents' => ['controller' => 'InvestorController', 'method' => 'getDocuments', 'middleware' => ['auth', 'role:investor']],
+    'POST /api/investor/partnership-application' => ['controller' => 'InvestorController', 'method' => 'submitPartnershipApplication', 'middleware' => ['auth', 'role:investor']],
 
     // API routes
     'GET /api/accounts/{id}' => ['controller' => 'ApiController', 'method' => 'getAccount'],

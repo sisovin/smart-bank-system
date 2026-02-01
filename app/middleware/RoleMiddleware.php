@@ -10,9 +10,11 @@ class RoleMiddleware {
         // Define role hierarchy (higher number = more permissions)
         $roleHierarchy = [
             'customer' => 1,
-            'teller' => 2,
-            'manager' => 3,
-            'admin' => 4
+            'investor' => 2,
+            'accredited_investor' => 3,
+            'teller' => 4,
+            'manager' => 5,
+            'admin' => 6
         ];
         
         $userRoleLevel = $roleHierarchy[strtolower($user['role'])] ?? 0;
@@ -46,6 +48,14 @@ class RoleMiddleware {
     
     public static function isTeller() {
         return self::checkRole('teller');
+    }
+
+    public static function isInvestor() {
+        return self::checkRole('investor');
+    }
+
+    public static function isAccreditedInvestor() {
+        return self::checkRole('accredited_investor');
     }
     
     public static function isCustomer() {

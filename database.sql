@@ -125,9 +125,16 @@ CREATE TABLE login_attempts (
 -- Insert Default Roles
 INSERT INTO roles (role_name, description) VALUES
 ('admin', 'System Administrator with full access'),
+('manager', 'Branch manager with supervisory rights'),
 ('teller', 'Bank teller with transaction processing rights'),
+('accredited_investor', 'Accredited investor with partnership access'),
+('investor', 'Regular investor with limited access'),
 ('customer', 'Regular banking customer');
 
 -- Insert Admin User (password: Admin123!)
 INSERT INTO users (username, email, password_hash, role_id) VALUES
 ('admin', 'admin@smartbank.com', '$argon2id$v=19$m=65536,t=4,p=1$T3l2Rm5hNVVpR0VvYzN6dg$qVKkQ5fFpN4O1Xr8jYwS2B7G9H0LzMnb', 1);
+
+-- Insert Sample Investor User (password: Investor123!)
+INSERT INTO users (username, email, password_hash, role_id) VALUES
+('investor', 'investor@smartbank.com', '$argon2id$v=19$m=65536,t=4,p=1$U3VwZXJTZWNyZXRLZXkwMTI$wQK8Q5fFpN4O1Xr8jYwS2B7G9H0LzMn', 4);
