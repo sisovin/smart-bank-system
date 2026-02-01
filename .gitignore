@@ -1,0 +1,436 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.staging
+.env.test
+
+# Logs
+*.log
+logs/
+storage/logs/
+app/logs/
+
+# Cache
+/cache/
+/storage/framework/cache/
+/storage/framework/sessions/
+/storage/framework/views/
+
+# Database
+*.sqlite
+*.db
+*.sql.bak
+database/*.sql
+!database.sql  # Keep the main schema if committed
+
+# Build artifacts
+/dist/
+/build/
+/public/assets/css/output.css
+/public/assets/js/build/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+/tmp/
+/temp/
+
+# PHP
+.phpunit.result.cache
+composer.lock  # Optional: if you want to commit it, remove this line
+
+# Node.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# Testing
+/tests/coverage/
+/phpunit.xml
+/test-results/
+
+# Security
+# Never commit sensitive files
+secrets/
+config/secrets.php
+config/keys.php
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+Session.vim
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Package managers
+.yarn/
+.pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# next.js build output
+.next
+
+# nuxt.js build output
+.nuxt
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# IntelliJ based IDEs
+.idea
+
+# Finder (MacOS)
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# VS Code
+.vscode/
+
+# Temporary folders
+tmp/
+temp/
+
+# Laravel specific (if applicable)
+storage/app/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+bootstrap/cache/*
+!storage/app/.gitkeep
+!storage/framework/.gitkeep
+!storage/framework/cache/.gitkeep
+!storage/framework/sessions/.gitkeep
+!storage/framework/views/.gitkeep
+!storage/logs/.gitkeep
+!bootstrap/cache/.gitkeep
+
+# Symfony specific (if applicable)
+var/cache/*
+var/logs/*
+var/sessions/*
+!var/cache/.gitkeep
+!var/logs/.gitkeep
+!var/sessions/.gitkeep
+
+# Drupal specific (if applicable)
+sites/*/files
+sites/*/private
+sites/*/tmp
+sites/*/cache
+
+# WordPress specific (if applicable)
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+
+# Magento specific (if applicable)
+var/cache/
+var/session/
+var/report/
+var/log/
+var/tmp/
+media/catalog/product/cache/
+media/tmp/
+
+# Custom banking system specific
+# Exclude sensitive banking data
+sensitive_data/
+bank_logs/
+audit_logs/
+transaction_logs/
+user_data/
+financial_reports/
+
+# Database backups
+*.sql.gz
+*.sql.zip
+db_backup/
+database_backup/
+
+# API keys and secrets
+api_keys/
+secrets/
+config/keys/
+config/secrets/
+
+# Test data
+test_data/
+sample_data/
+dummy_data/
+
+# Development notes and planning
+.notes/
+.planning/
+.agents/  # If you don't want to commit the agents folder
+!README.md  # But keep the README
+
+# PowerPoint and presentation files (if generated)
+*.pptx
+*.ppt
+*.odp
+slides/
+presentations/
+
+# Docker (if used)
+.docker/
+docker-compose.override.yml
+
+# Kubernetes
+*.yaml
+*.yml
+k8s/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfvars
+
+# Ansible
+*.retry
+
+# Vagrant
+.vagrant/
+
+# Packer
+packer_cache/
+
+# Local development overrides
+.env.local
+.env.development
+.env.test
+
+# Backup files
+*.orig
+*.rej
+
+# Lock files (optional - some projects commit these)
+# composer.lock
+# package-lock.json
+# yarn.lock
+
+# Generated documentation
+docs/build/
+api_docs/
+
+# Screenshots and media
+screenshots/
+media/
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Executables
+*.exe
+*.msi
+*.dmg
+*.pkg
+
+# Certificates
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# Password files
+*.kdbx
+*.keychain
+
+# Virtual environments
+venv/
+.venv/
+env/
+.conda/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# PyCharm
+#  JetBrains specific template is already added
+
+# VS Code
+.vscode/settings.json  # If you want to keep some settings, adjust accordingly
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# End of .gitignore

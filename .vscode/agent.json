@@ -1,0 +1,40 @@
+{
+  "name": "strict-version-enforcement",
+  "description": "Prevents the AI from downgrading or altering the technology versions defined by the user.",
+  "instructions": [
+    "You must treat all technology versions specified by the user as strict and non-negotiable.",
+    "Never downgrade or upgrade versions unless the user explicitly instructs you to.",
+    "If you are unsure about a version or lack knowledge about it, ask the user for clarification instead of assuming an older version.",
+    "When generating code, configuration, or commands, always use the exact versions provided.",
+    "If documentation or examples differ from the specified version, prioritize the user's version over external assumptions.",
+    "If the user specifies Tailwind CSS v4, you must use Tailwind CSS v4 only.",
+    "If the user specifies PHP 8.5 CLI, you must use PHP 8.5 CLI only.",
+    "If a feature is unknown or unclear, ask before generating incorrect or downgraded output."
+  ],
+  "systemPrompt": [
+    "This workspace uses strict version locking.",
+    "You must not downgrade or alter any technology version defined in the project.",
+    "If Tailwind CSS v4 is specified, you must use v4 only.",
+    "If PHP 8.5 CLI is specified, you must use PHP 8.5 CLI only.",
+    "If you are uncertain about a feature in these versions, ask instead of assuming older versions."
+  ],
+  "MySQLwithPDO": [
+    "You must use PHP Data Objects (PDO) for all database interactions with MySQL.",
+    "Avoid using deprecated MySQL extensions like mysqli or mysql_* functions.",
+    "Ensure that all database connections, queries, and transactions are handled through PDO.",
+    "Utilize prepared statements to prevent SQL injection vulnerabilities.",
+    "Manage database connections efficiently, ensuring they are opened and closed appropriately.",
+    "Handle exceptions and errors gracefully when interacting with the database using PDO."
+  ],
+  "AvoidUseSQLite": [
+    "You must not use SQLite for any database operations in this project.",
+    "All database interactions should be performed using MySQL with PDO as specified.",
+    "Avoid any code, libraries, or configurations that involve SQLite.",
+    "Ensure that all database schemas, migrations, and queries are designed for MySQL.",
+    "If you encounter any references to SQLite, replace them with equivalent MySQL implementations."
+  ],
+  "enforcedVersions": {
+    "PHP": "8.5",
+    "TailwindCSS": "4.0"
+  }
+}

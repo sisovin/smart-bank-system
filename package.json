@@ -1,0 +1,25 @@
+{
+  "name": "smart-bank-system",
+  "version": "1.0.0",
+  "description": "A full-stack banking system built with PHP 8.5, MySQL, Tailwind CSS, and JavaScript.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "npx tailwindcss/cli -i ./resources/css/input.css -o ./assets/css/main.css --watch",
+    "build-prod": "npx @tailwindcss/cli -i ./resources/css/input.css -o ./assets/css/main.css --minify",
+    "build-dev": "npx @tailwindcss/cli -i ./resources/css/input.css -o ./assets/css/main.css",
+    "prod": "npm run build-prod"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "tailwindcss": "^4.1.18"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18"
+  }
+}
